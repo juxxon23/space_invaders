@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://dek3g6a3eh5cj"]
+
+[ext_resource type="Script" uid="uid://fku4xwf3xawv" path="res://src/start_screen.gd" id="1_afy8x"]
+[ext_resource type="FontFile" uid="uid://chulekbh3bhla" path="res://assets/font/andina.ttf" id="1_pevhg"]
+[ext_resource type="Texture2D" uid="uid://c0ckl38ovdhql" path="res://icon.svg" id="2_afy8x"]
+
+[node name="StartScreen" type="CanvasLayer"]
+script = ExtResource("1_afy8x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.65
+offset_left = -278.0
+offset_top = -368.2
+offset_right = 333.0
+offset_bottom = 165.8
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_font_sizes/font_size = 108
+text = "SPACE 
+INVADERS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture = ExtResource("2_afy8x")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_font_sizes/font_size = 30
+text = "= 10 POINTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+modulate = Color(1, 0.368627, 1, 1)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("2_afy8x")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_font_sizes/font_size = 30
+text = "= 20 POINTS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+modulate = Color(1, 1, 0, 1)
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("2_afy8x")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_font_sizes/font_size = 30
+text = "= 40 POINTS"
+
+[node name="PlayGame" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_font_sizes/font_size = 40
+text = "PLAY"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/PlayGame" to="." method="_on_play_game_pressed"]
