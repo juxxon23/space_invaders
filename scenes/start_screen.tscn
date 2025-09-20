@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://dek3g6a3eh5cj"]
 
-[ext_resource type="Script" uid="uid://fku4xwf3xawv" path="res://src/start_screen.gd" id="1_afy8x"]
-[ext_resource type="FontFile" uid="uid://chulekbh3bhla" path="res://assets/font/andina.ttf" id="1_pevhg"]
-[ext_resource type="Texture2D" uid="uid://c0ckl38ovdhql" path="res://icon.svg" id="2_afy8x"]
+[ext_resource type="Script" uid="uid://fku4xwf3xawv" path="res://src/start_screen.gd" id="1_he1sj"]
+[ext_resource type="FontFile" uid="uid://chulekbh3bhla" path="res://assets/font/andina.ttf" id="2_r2jwc"]
+[ext_resource type="Texture2D" uid="uid://c0ckl38ovdhql" path="res://icon.svg" id="3_hm208"]
 
 [node name="StartScreen" type="CanvasLayer"]
-script = ExtResource("1_afy8x")
+script = ExtResource("1_he1sj")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = -1
@@ -33,7 +33,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
-theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_fonts/font = ExtResource("2_r2jwc")
 theme_override_font_sizes/font_size = 108
 text = "SPACE 
 INVADERS"
@@ -55,12 +55,12 @@ size_flags_horizontal = 4
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
-texture = ExtResource("2_afy8x")
+texture = ExtResource("3_hm208")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_fonts/font = ExtResource("2_r2jwc")
 theme_override_font_sizes/font_size = 30
 text = "= 10 POINTS"
 horizontal_alignment = 1
@@ -74,12 +74,12 @@ size_flags_horizontal = 4
 modulate = Color(1, 0.368627, 1, 1)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("2_afy8x")
+texture = ExtResource("3_hm208")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_fonts/font = ExtResource("2_r2jwc")
 theme_override_font_sizes/font_size = 30
 text = "= 20 POINTS"
 horizontal_alignment = 1
@@ -93,13 +93,13 @@ size_flags_horizontal = 4
 modulate = Color(1, 1, 0, 1)
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
-texture = ExtResource("2_afy8x")
+texture = ExtResource("3_hm208")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_fonts/font = ExtResource("2_r2jwc")
 theme_override_font_sizes/font_size = 30
 text = "= 40 POINTS"
 
@@ -108,7 +108,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_fonts/font = ExtResource("1_pevhg")
+theme_override_fonts/font = ExtResource("2_r2jwc")
 theme_override_font_sizes/font_size = 40
 text = "PLAY"
 
