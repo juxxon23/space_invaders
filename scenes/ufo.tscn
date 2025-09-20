@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdw6o7vjujj0g"]
+
+[ext_resource type="Texture2D" uid="uid://c0ckl38ovdhql" path="res://icon.svg" id="1_rotgi"]
+[ext_resource type="Script" uid="uid://xr5damualju2" path="res://src/ufo.gd" id="1_xf4xf"]
+[ext_resource type="Script" uid="uid://d374yhgqwkykf" path="res://src/shooting_point.gd" id="3_1aa4c"]
+[ext_resource type="Script" uid="uid://5xg5pqruogei" path="res://src/spawn_timer.gd" id="4_vvsiw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf4xf"]
+size = Vector2(48, 48)
+
+[node name="UFO" type="Area2D"]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("1_xf4xf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_rotgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xf4xf")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.5, 2.6)
+
+[node name="ShootingPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 26)
+script = ExtResource("3_1aa4c")
+
+[node name="SpawnTimer" type="Timer" parent="ShootingPoint"]
+unique_name_in_owner = true
+script = ExtResource("4_vvsiw")
+min_time = 1
+max_time = 3
+metadata/_custom_type_script = "uid://5xg5pqruogei"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

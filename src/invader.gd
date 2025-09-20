@@ -1,6 +1,8 @@
 class_name Invader
 extends Area2D
 
+signal invader_destroyed(points: int)
+
 var config: Resource
 
 @onready var sprite_2d: Sprite2D = %Sprite2D
@@ -14,3 +16,4 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is Laser:
 		area.queue_free()
 		queue_free()
+		invader_destroyed.emit(config.points)

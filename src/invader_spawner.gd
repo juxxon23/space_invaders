@@ -1,6 +1,11 @@
 class_name InvaderSpawner
 extends Node2D
 
+
+signal invader_destroyed(points: int)
+signal game_won
+signal game_lost
+
 const invader_scene = preload("res://scenes/invader.tscn")
 const invader_shot_scene = preload("res://scenes/invader_shot.tscn")
 # Spawner configuration
@@ -14,6 +19,8 @@ const INVADERS_POSITION_X_INCREMENT = 10
 const INVADERS_POSITION_Y_INCRERMENT = 20
 
 var movement_direction = 1
+var invader_destroyed_count = 0
+var invader_total_count = ROWS * COLUMNS
 
 @onready var movement_timer: Timer = %MovementTimer
 @onready var shot_timer: Timer = %ShotTimer
@@ -51,6 +58,7 @@ func spawn_invader(invader_config, spawn_position: Vector2):
 	var invader = invader_scene.instantiate() as Invader
 	invader.config = invader_config
 	invader.global_position = spawn_position
+	invader.invader_destroyed.connect(on_invader_destroyed)
 	add_child(invader)
 
 
@@ -65,17 +73,30 @@ func on_invader_shot() -> void:
 	get_tree().root.add_child(invader_shot)
 
 
-func _on_left_wall_area_entered(area: Area2D) -> void:
+func on_invader_destroyed(points: int) -> void:
+	invader_destroyed.emit(points)
+	invader_destroyed_count += 1
+	
+	if invader_destroyed_count == invader_total_count:
+		game_won.emit()
+		shot_timer.stop()
+		movement_timer.stop()
+		movement_direction = 0
+
+
+func _on_left_wall_area_entered(_area: Area2D) -> void:
 	if movement_direction == -1:
 		position.y += INVADERS_POSITION_Y_INCRERMENT
 		movement_direction *= -1
 
 
-func _on_right_wall_area_entered(area: Area2D) -> void:
+func _on_right_wall_area_entered(_area: Area2D) -> void:
 	if movement_direction == 1:
 		position.y += INVADERS_POSITION_Y_INCRERMENT
 		movement_direction *= -1
 
 
-func _on_bottom_wall_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+func _on_bottom_wall_area_entered(_area: Area2D) -> void:
+	game_lost.emit()
+	movement_timer.stop()
+	movement_direction = 0

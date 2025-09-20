@@ -1,6 +1,8 @@
 class_name Player
 extends Area2D
 
+signal player_destroyed
+
 @export var speed = 400
 
 var direction = Vector2.ZERO
@@ -44,3 +46,6 @@ func _process(delta: float) -> void:
 
 func on_player_destroyed() -> void:
 	speed = 0
+	await get_tree().create_timer(1).timeout
+	player_destroyed.emit()
+	queue_free()
